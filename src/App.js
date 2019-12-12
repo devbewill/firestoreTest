@@ -1,7 +1,10 @@
 import React from 'react';
 import './App.css';
 import firebase from './firebase';
-import { StudioInput } from './StudioInput';
+import Navbar from './components/Navbar';
+import Container from '@material-ui/core/Container';
+import SimpleCard from './components/SimpleCard';
+import StudioInput from './components/StudioInput';
 
 function App() {
 	const [ studi, setStudi ] = React.useState([]);
@@ -25,20 +28,25 @@ function App() {
 	};
 
 	return (
-		<ul>
-			<input value={newStudioNome} onChange={(e) => setNewStudioNome(e.target.value)} />
-			<input value={newStudioCity} onChange={(e) => setNewStudioCity(e.target.value)} />
-			<button onClick={onCreate}>Add</button>
+		<React.Fragment>
+			<Container maxWidth="sm">
+				<Navbar />
+				<div className="cards">
+					{studi.map((studio, i) => (
+						<div>
+							<SimpleCard key={i} nome={studio.nome} city={studio.city} />
+							<StudioInput studio={studio} />
+						</div>
+					))}
+				</div>
 
-			<h3>Studi</h3>
-			{studi.map((studio, i) => (
-				<li key={i}>
-					<h5>{studio.nome}</h5>
-					<h6>{studio.city}</h6>
-					<StudioInput studio={studio} />
-				</li>
-			))}
-		</ul>
+				<input value={newStudioNome} onChange={(e) => setNewStudioNome(e.target.value)} />
+				<input value={newStudioCity} onChange={(e) => setNewStudioCity(e.target.value)} />
+				<button onClick={onCreate}>Add</button>
+
+				<h3>Studi</h3>
+			</Container>
+		</React.Fragment>
 	);
 }
 
