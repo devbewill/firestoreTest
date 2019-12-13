@@ -3,48 +3,35 @@ import './App.css';
 import firebase from './firebase';
 import Navbar from './components/Navbar';
 import Container from '@material-ui/core/Container';
+import AddStudio from './components/AddStudio';
 import SimpleCard from './components/SimpleCard';
-import StudioInput from './components/StudioInput';
 
 function App() {
 	const [ studi, setStudi ] = React.useState([]);
-	const [ newStudioNome, setNewStudioNome ] = React.useState();
-	const [ newStudioCity, setNewStudioCity ] = React.useState();
+	const [ dipendenti, setDipendenti ] = React.useState([]);
 
 	React.useEffect(() => {
 		const fetchData = async () => {
 			const db = firebase.firestore();
 			const data = await db.collection('studi').get();
-
 			setStudi(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+
+			const dip = await db.collection('studi').doc('G0TpyhS6ijvlHmPy9OOC').collection('dipendenti').get();
+			setDipendenti(dip.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 		};
 
 		fetchData();
 	}, []);
 
-	const onCreate = () => {
-		const db = firebase.firestore();
-		db.collection('studi').add({ nome: newStudioNome, city: newStudioCity });
-	};
-
 	return (
 		<React.Fragment>
-			<Container maxWidth="sm">
+			{/* {console.log(studi)} */}
+			<Container maxWidth="xl">
 				<Navbar />
-				<div className="cards">
-					{studi.map((studio, i) => (
-						<div>
-							<SimpleCard key={i} nome={studio.nome} city={studio.city} />
-							<StudioInput studio={studio} />
-						</div>
-					))}
-				</div>
-
-				<input value={newStudioNome} onChange={(e) => setNewStudioNome(e.target.value)} />
-				<input value={newStudioCity} onChange={(e) => setNewStudioCity(e.target.value)} />
-				<button onClick={onCreate}>Add</button>
-
-				<h3>Studi</h3>
+				{/* <AddStudio /> */}
+				<form className="cardsContainer" noValidate autoComplete="off">
+					{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
+				</form>
 			</Container>
 		</React.Fragment>
 	);
