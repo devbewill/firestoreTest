@@ -12,6 +12,22 @@ function SimpleCard({ studio }) {
 	const [ nome, setNome ] = React.useState(studio.nome);
 	const [ city, setCity ] = React.useState(studio.city);
 
+	const [ dipendenti, setDipendenti ] = React.useState([]);
+
+	React.useEffect(
+		() => {
+			const fetchData = async () => {
+				const db = firebase.firestore();
+
+				const dip = await db.collection('studi').doc(studio.id).collection('dipendenti').get();
+				setDipendenti(dip.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+			};
+
+			fetchData();
+		},
+		[ studio ]
+	);
+
 	const onUpdate = () => {
 		const db = firebase.firestore();
 		db.collection('studi').doc(studio.id).set({ ...studio, nome, city });
@@ -48,6 +64,8 @@ function SimpleCard({ studio }) {
 			<StyledBtn variant="contained" color="secondary" onClick={onDelete}>
 				Delete
 			</StyledBtn>
+
+			{dipendenti.map((dip, i) => <div key={i}>{dip.nome}</div>)}
 		</div>
 	);
 }
