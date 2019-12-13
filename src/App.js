@@ -23,7 +23,7 @@ function App() {
 		<React.Fragment>
 			<Container maxWidth="xl">
 				<Navbar />
-				{/* <AddStudio /> */}
+				<AddStudio />
 				<form className="cardsContainer" noValidate autoComplete="off">
 					{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
 				</form>

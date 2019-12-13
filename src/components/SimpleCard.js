@@ -18,9 +18,9 @@ function SimpleCard({ studio }) {
 		() => {
 			const fetchData = async () => {
 				const db = firebase.firestore();
-
-				const dip = await db.collection('studi').doc(studio.id).collection('dipendenti').get();
-				setDipendenti(dip.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+				const dipendenti = await db.collection(`studi/${studio.id}/dipendenti`).get();
+				//const dip = await db.collection('studi').doc(studio.id).collection('dipendenti').get();
+				setDipendenti(dipendenti.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 			};
 
 			fetchData();
