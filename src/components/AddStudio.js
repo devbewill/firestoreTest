@@ -13,8 +13,8 @@ const StyledTextField = styled(TextField)({
 });
 
 function AddStudio() {
-	const [ newStudioNome, setNewStudioNome ] = useState();
-	const [ newStudioCity, setNewStudioCity ] = useState();
+	const [ newStudioNome, setNewStudioNome ] = useState('');
+	const [ newStudioCity, setNewStudioCity ] = useState('');
 
 	const onCreate = () => {
 		const db = firebase.firestore();
