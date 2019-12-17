@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import firebase from './firebase';
 import Navbar from './components/Navbar';
@@ -7,13 +7,15 @@ import AddStudio from './components/AddStudio';
 import SimpleCard from './components/SimpleCard';
 
 function App() {
-	const [ studi, setStudi ] = React.useState([]);
+	const [ studi, setStudi ] = useState([]);
+	const [ count, setCount ] = useState([]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const fetchData = async () => {
 			const db = firebase.firestore();
 			const data = await db.collection('studi').get();
 			setStudi(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+			setCount(() => data.docs.length);
 		};
 
 		fetchData();
@@ -21,9 +23,10 @@ function App() {
 
 	return (
 		<React.Fragment>
+			<Navbar />
 			<Container maxWidth="xl">
-				<Navbar />
-				<AddStudio />
+				<AddStudio count={(count, setCount)} />
+				<h2>studi censiti: {count}</h2>
 				<form className="cardsContainer" noValidate autoComplete="off">
 					{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
 				</form>

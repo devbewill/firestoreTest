@@ -1,16 +1,36 @@
 .cardsContainer {
-	background: #efefef;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .card {
-	background: #fff;
+	background: #f9f9f9;
+	min-width: 40vw;
 	margin: 0.5em;
 	padding: 1em 2em;
+	display: flex;
+	flex-direction: row;
 }
 
-button {
-	margin: 0 1em;
+.addBar {
+	display: flex;
+	padding: 1em 2em;
+	margin: 0.5em;
+	background: #fff;
+	justify-content: center;
+}
+
+.action,
+.fields {
+	margin: 1em 0;
+}
+
+.dipendenti {
+	display: flex;
+	flex-direction: column;
+}
+
+.dipendente {
+	display: flex;
 }

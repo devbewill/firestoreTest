@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import { styled } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -8,13 +8,17 @@ const StyledBtn = styled(Button)({
 	margin: '0 0.5em'
 });
 
+const StyledTextField = styled(TextField)({
+	margin: '0 0.5em'
+});
+
 function SimpleCard({ studio }) {
-	const [ nome, setNome ] = React.useState(studio.nome);
-	const [ city, setCity ] = React.useState(studio.city);
+	const [ nome, setNome ] = useState(studio.nome);
+	const [ city, setCity ] = useState(studio.city);
 
-	const [ dipendenti, setDipendenti ] = React.useState([]);
+	const [ dipendenti, setDipendenti ] = useState([]);
 
-	React.useEffect(
+	useEffect(
 		() => {
 			const fetchData = async () => {
 				const db = firebase.firestore();
@@ -40,32 +44,45 @@ function SimpleCard({ studio }) {
 
 	return (
 		<div className="card">
-			<TextField
-				placeholder="nome"
-				value={nome}
-				label="nome"
-				onChange={(e) => {
-					setNome(e.target.value);
-				}}
-			/>
+			<div className="fields">
+				<StyledTextField
+					placeholder="nome"
+					value={nome}
+					label="nome"
+					onChange={(e) => {
+						setNome(e.target.value);
+					}}
+				/>
 
-			<TextField
-				placeholder="city"
-				value={city}
-				label="city"
-				onChange={(e) => {
-					setCity(e.target.value);
-				}}
-			/>
+				<StyledTextField
+					placeholder="city"
+					value={city}
+					label="city"
+					onChange={(e) => {
+						setCity(e.target.value);
+					}}
+				/>
+				<div className="action">
+					<StyledBtn variant="contained" color="primary" onClick={onUpdate}>
+						Update
+					</StyledBtn>
+					<StyledBtn variant="contained" color="secondary" onClick={onDelete}>
+						Delete
+					</StyledBtn>
+				</div>
+				<h3>Dipendenti</h3>
+				{dipendenti.map((dip, i) => (
+					<div key={i} className="dipendenti">
+						<div className="dipendente">
+							<div>
+								{dip.nome} {dip.cognome}
+							</div>
 
-			<StyledBtn variant="contained" color="primary" onClick={onUpdate}>
-				Update
-			</StyledBtn>
-			<StyledBtn variant="contained" color="secondary" onClick={onDelete}>
-				Delete
-			</StyledBtn>
-
-			{dipendenti.map((dip, i) => <div key={i}>{dip.nome}</div>)}
+							<div>{dip.piva}</div>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
