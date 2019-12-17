@@ -19,6 +19,8 @@ function AddStudio() {
 	const onCreate = () => {
 		const db = firebase.firestore();
 		db.collection('studi').add({ nome: newStudioNome, city: newStudioCity });
+		setNewStudioNome('');
+		setNewStudioCity('');
 	};
 
 	return (

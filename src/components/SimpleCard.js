@@ -18,16 +18,21 @@ function SimpleCard({ studio }) {
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
+	const [ mostraDipendenti, setMostraDipendenti ] = useState(false);
+
 	useEffect(
 		() => {
-			const fetchData = async () => {
-				const db = firebase.firestore();
-				const dipendenti = await db.collection(`studi/${studio.id}/dipendenti`).get();
-				//const dip = await db.collection('studi').doc(studio.id).collection('dipendenti').get();
-				setDipendenti(dipendenti.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-			};
+			const db = firebase.firestore().collection(`studi/${studio.id}/dipendenti`);
 
-			fetchData();
+			db.onSnapshot((snapshot) => {
+				const data = [];
+
+				snapshot.forEach((doc) => {
+					data.push({ ...doc.data(), id: doc.id });
+				});
+
+				setDipendenti(data);
+			});
 		},
 		[ studio ]
 	);
@@ -70,18 +75,23 @@ function SimpleCard({ studio }) {
 						Delete
 					</StyledBtn>
 				</div>
-				<h3>Dipendenti</h3>
-				{dipendenti.map((dip, i) => (
-					<div key={i} className="dipendenti">
-						<div className="dipendente">
-							<div>
-								{dip.nome} {dip.cognome}
-							</div>
+				<StyledBtn onClick={() => setMostraDipendenti(!mostraDipendenti)}>Mostra dipendenti</StyledBtn>
+				{mostraDipendenti && (
+					<div>
+						<h3>Dipendenti</h3>
+						{dipendenti.map((dip, i) => (
+							<div key={i} className="dipendenti">
+								<div className="dipendente">
+									<div>
+										{dip.nome} {dip.cognome}
+									</div>
 
-							<div>{dip.piva}</div>
-						</div>
+									<div>{dip.piva}</div>
+								</div>
+							</div>
+						))}
 					</div>
-				))}
+				)}
 			</div>
 		</div>
 	);

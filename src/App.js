@@ -10,17 +10,6 @@ function App() {
 	const [ studi, setStudi ] = useState([]);
 	const [ count, setCount ] = useState();
 
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		const db = firebase.firestore();
-	// 		const data = await db.collection('studi').get();
-	// 		setStudi(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-	// 		setCount(() => data.docs.length);
-	// 	};
-
-	// 	fetchData();
-	// }, []);
-
 	useEffect(() => {
 		const db = firebase.firestore().collection('studi');
 
