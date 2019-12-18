@@ -13,7 +13,7 @@ function App() {
 	useEffect(() => {
 		const db = firebase.firestore().collection('studi');
 
-		db.onSnapshot((snapshot) => {
+		db.orderBy('nome').onSnapshot((snapshot) => {
 			const data = [];
 
 			snapshot.forEach((doc) => {
