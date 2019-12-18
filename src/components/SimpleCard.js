@@ -13,8 +13,8 @@ const StyledTextField = styled(TextField)({
 });
 
 function SimpleCard({ studio }) {
-	const [ nome, setNome ] = useState(studio.nome);
-	const [ city, setCity ] = useState(studio.city);
+	let [ nome, setNome ] = useState(studio.nome);
+	let [ city, setCity ] = useState(studio.city);
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
@@ -49,6 +49,7 @@ function SimpleCard({ studio }) {
 
 	return (
 		<div className="card">
+			<h2>{studio.nome}</h2>
 			<div className="fields">
 				<StyledTextField
 					placeholder="nome"
