@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
+import Dipendenti from './Dipendenti';
+import AddDipendente from './AddDipendente';
 import { styled } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -18,12 +20,11 @@ function SimpleCard({ studio }) {
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
-	const [ mostraDipendenti, setMostraDipendenti ] = useState(false);
-
 	useEffect(
 		() => {
 			setNome(studio.nome);
 			setCity(studio.city);
+
 			const db = firebase.firestore().collection(`studi/${studio.id}/dipendenti`);
 
 			db.onSnapshot((snapshot) => {
@@ -78,23 +79,12 @@ function SimpleCard({ studio }) {
 						Delete
 					</StyledBtn>
 				</div>
-				<StyledBtn onClick={() => setMostraDipendenti(!mostraDipendenti)}>Mostra dipendenti</StyledBtn>
-				{mostraDipendenti && (
-					<div>
-						<h3>Dipendenti</h3>
-						{dipendenti.map((dip, i) => (
-							<div key={i} className="dipendenti">
-								<div className="dipendente">
-									<div>
-										{dip.nome} {dip.cognome}
-									</div>
 
-									<div>{dip.piva}</div>
-								</div>
-							</div>
-						))}
-					</div>
-				)}
+				<div>
+					<h3>Dipendenti</h3>
+					<AddDipendente studio={studio} />
+					{dipendenti.map((dip, i) => <Dipendenti key={i} dip={dip} studio={studio} />)}
+				</div>
 			</div>
 		</div>
 	);

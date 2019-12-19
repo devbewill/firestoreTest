@@ -9,6 +9,7 @@ import SimpleCard from './components/SimpleCard';
 function App() {
 	const [ studi, setStudi ] = useState([]);
 	const [ count, setCount ] = useState();
+	const [ isLoading, setIsLoading ] = useState(true);
 
 	useEffect(() => {
 		const db = firebase.firestore().collection('studi');
@@ -22,6 +23,7 @@ function App() {
 
 			setStudi(data);
 			setCount(data.length);
+			setIsLoading(false);
 		});
 	}, []);
 
@@ -29,39 +31,19 @@ function App() {
 		<React.Fragment>
 			<Navbar />
 			<Container maxWidth="xl">
+				{isLoading && <div>Loading...</div>}
 				<AddStudio />
-				<h2>studi censiti: {count}</h2>
-				<form className="cardsContainer" noValidate autoComplete="off">
-					{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
-				</form>
+				{!isLoading && (
+					<React.Fragment>
+						<h2>studi censiti: {count}</h2>
+						<form className="cardsContainer" noValidate autoComplete="off">
+							{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
+						</form>
+					</React.Fragment>
+				)}
 			</Container>
 		</React.Fragment>
 	);
 }
-
-// 	const [ todos, setTodos ] = useState([]);
-
-// 	useEffect(() => {
-// 		const db = firebase.firestore().collection('studi');
-
-// 		db.onSnapshot((snapshot) => {
-// 			const retrievedTodos = [];
-
-// 			snapshot.forEach((doc) => {
-// 				retrievedTodos.push({ ...doc.data(), id: doc.id });
-// 			});
-
-// 			setTodos(retrievedTodos);
-// 		});
-// 	}, []);
-
-// 	return (
-// 		<div>
-// 			{todos.map((todo) => {
-// 				return <div>{todo.city}</div>;
-// 			})}
-// 		</div>
-// 	);
-// }
 
 export default App;
