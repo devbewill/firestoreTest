@@ -1,36 +1,57 @@
 .cardsContainer {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 }
 
+.count {
+	font-size: 5vw;
+	color: deeppink;
+}
 .card {
-	background: #f9f9f9;
-	min-width: 40vw;
-	margin: 0.5em;
-	padding: 1em 2em;
-	display: flex;
-	flex-direction: row;
+	padding-left: 5em;
 }
 
 .addBar {
 	display: flex;
 	padding: 1em 2em;
-	margin: 0.5em;
-	background: #fff;
-	justify-content: center;
 }
 
-.action,
-.fields {
+.flexRowParent {
+	display: flex;
+	align-items: center;
+	/* justify-content: stretch; */
+}
+
+.flexRowParent {
+	display: flex;
+	align-items: center;
+	background: #f3f3f3;
 	margin: 1em 0;
+	padding: 2em 0;
+	border-radius: 1em;
+	/* justify-content: stretch; */
 }
 
-.dipendenti {
-	display: flex;
-	flex-direction: column;
+h1 {
+	font-size: 8vw;
+	margin: 1rem;
+	text-align: right;
+	min-width: 40vw;
 }
 
-.dipendente {
-	display: flex;
+h3 {
+	font-size: 0.9em;
+	padding: 2em 0 0.5em 0;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+h4 {
+	margin: 0;
+	padding: 0;
+}
+
+.separator {
+	padding-top: 5px;
 }

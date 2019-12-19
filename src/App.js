@@ -35,7 +35,9 @@ function App() {
 				<AddStudio />
 				{!isLoading && (
 					<React.Fragment>
-						<h2>studi censiti: {count}</h2>
+						<h2>
+							<span className="count">{count}</span> studi salvati
+						</h2>
 						<form className="cardsContainer" noValidate autoComplete="off">
 							{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
 						</form>

@@ -2,17 +2,6 @@ import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import Dipendenti from './Dipendenti';
 import AddDipendente from './AddDipendente';
-import { styled } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-
-const StyledBtn = styled(Button)({
-	margin: '0 0.5em'
-});
-
-const StyledTextField = styled(TextField)({
-	margin: '0 0.5em'
-});
 
 function SimpleCard({ studio }) {
 	const [ nome, setNome ] = useState(studio.nome);
@@ -40,50 +29,55 @@ function SimpleCard({ studio }) {
 		[ studio ]
 	);
 
-	const onUpdate = () => {
+	const onUpdate = (e) => {
+		e.preventDefault();
 		const db = firebase.firestore();
 		db.collection('studi').doc(studio.id).set({ ...studio, nome, city });
 	};
 
-	const onDelete = () => {
+	const onDelete = (e) => {
+		e.preventDefault();
 		const db = firebase.firestore();
 		db.collection('studi').doc(studio.id).delete();
 	};
 
 	return (
-		<div className="card">
-			<h2>{studio.nome}</h2>
-			<div className="fields">
-				<StyledTextField
-					placeholder={studio.nome}
-					value={nome}
-					label="Nome"
-					onChange={(e) => {
-						setNome(e.target.value);
-					}}
-				/>
+		<div className="flexRowParent">
+			<h1>{studio.nome}</h1>
+			<div className="card">
+				<h3>Attributi Studio</h3>
+				<div className="fields">
+					<input
+						placeholder={studio.nome}
+						value={nome}
+						label="Nome"
+						onChange={(e) => {
+							setNome(e.target.value);
+						}}
+					/>
 
-				<StyledTextField
-					placeholder={studio.city}
-					value={city}
-					label="City"
-					onChange={(e) => {
-						setCity(e.target.value);
-					}}
-				/>
-				<div className="action">
-					<StyledBtn variant="contained" color="primary" onClick={onUpdate}>
+					<input
+						placeholder={studio.city}
+						value={city}
+						label="City"
+						onChange={(e) => {
+							setCity(e.target.value);
+						}}
+					/>
+
+					<button variant="contained" color="primary" onClick={onUpdate}>
 						Update
-					</StyledBtn>
-					<StyledBtn variant="contained" color="secondary" onClick={onDelete}>
+					</button>
+					<button variant="contained" color="secondary" onClick={onDelete}>
 						Delete
-					</StyledBtn>
-				</div>
+					</button>
 
-				<div>
-					<h3>Dipendenti</h3>
-					<AddDipendente studio={studio} />
-					{dipendenti.map((dip, i) => <Dipendenti key={i} dip={dip} studio={studio} />)}
+					<div>
+						<h3>Lista Dipendenti</h3>
+
+						{dipendenti.map((dip, i) => <Dipendenti key={i} dip={dip} studio={studio} />)}
+						<AddDipendente studio={studio} />
+					</div>
 				</div>
 			</div>
 		</div>

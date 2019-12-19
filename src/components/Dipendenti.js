@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
-import Button from '@material-ui/core/Button';
 
 function Dipendenti({ studio, dip }) {
 	const [ dipNome, setDipNome ] = useState(dip.nome);
@@ -14,7 +13,8 @@ function Dipendenti({ studio, dip }) {
 		[ dip ]
 	);
 
-	const onUpdate = () => {
+	const onUpdate = (e) => {
+		e.preventDefault();
 		const db = firebase.firestore().collection(`studi/${studio.id}/dipendenti`);
 		db.doc(dip.id).set({
 			nome: dipNome,
@@ -22,41 +22,39 @@ function Dipendenti({ studio, dip }) {
 		});
 	};
 
-	const onDelete = () => {
+	const onDelete = (e) => {
+		e.preventDefault();
 		const db = firebase.firestore().collection(`studi/${studio.id}/dipendenti`);
 		db.doc(dip.id).delete();
 	};
 
 	return (
-		<React.Fragment>
-			<div className="dipendente">
-				<input
-					type="text"
-					value={dipNome}
-					label="Dip nome"
-					onChange={(e) => {
-						setDipNome(e.target.value);
-					}}
-				/>
-				<input
-					type="text"
-					value={dipCognome}
-					label="Dip cognome"
-					onChange={(e) => {
-						setDipCognome(e.target.value);
-					}}
-				/>
-				<div className="action">
-					<Button variant="contained" color="primary" onClick={onUpdate}>
-						Update
-					</Button>
+		<div className="flexRow">
+			<input
+				type="text"
+				value={dipNome}
+				label="Dip nome"
+				onChange={(e) => {
+					setDipNome(e.target.value);
+				}}
+			/>
+			<input
+				type="text"
+				value={dipCognome}
+				label="Dip cognome"
+				onChange={(e) => {
+					setDipCognome(e.target.value);
+				}}
+			/>
 
-					<Button variant="contained" color="secondary" onClick={onDelete}>
-						Delete
-					</Button>
-				</div>
-			</div>
-		</React.Fragment>
+			<button variant="contained" color="primary" onClick={onUpdate}>
+				Update
+			</button>
+
+			<button variant="contained" color="secondary" onClick={onDelete}>
+				Delete
+			</button>
+		</div>
 	);
 }
 
