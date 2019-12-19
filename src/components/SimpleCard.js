@@ -13,8 +13,8 @@ const StyledTextField = styled(TextField)({
 });
 
 function SimpleCard({ studio }) {
-	let [ nome, setNome ] = useState(studio.nome);
-	let [ city, setCity ] = useState(studio.city);
+	const [ nome, setNome ] = useState(studio.nome);
+	const [ city, setCity ] = useState(studio.city);
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
@@ -22,6 +22,8 @@ function SimpleCard({ studio }) {
 
 	useEffect(
 		() => {
+			setNome(studio.nome);
+			setCity(studio.city);
 			const db = firebase.firestore().collection(`studi/${studio.id}/dipendenti`);
 
 			db.onSnapshot((snapshot) => {
@@ -52,18 +54,18 @@ function SimpleCard({ studio }) {
 			<h2>{studio.nome}</h2>
 			<div className="fields">
 				<StyledTextField
-					placeholder="nome"
+					placeholder={studio.nome}
 					value={nome}
-					label="nome"
+					label="Nome"
 					onChange={(e) => {
 						setNome(e.target.value);
 					}}
 				/>
 
 				<StyledTextField
-					placeholder="city"
+					placeholder={studio.city}
 					value={city}
-					label="city"
+					label="City"
 					onChange={(e) => {
 						setCity(e.target.value);
 					}}
