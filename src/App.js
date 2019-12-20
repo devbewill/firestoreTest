@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Container from '@material-ui/core/Container';
 import AddStudio from './components/AddStudio';
 import SimpleCard from './components/SimpleCard';
+import ImageUpload from './components/ImageUpload';
 
 function App() {
 	const [ studi, setStudi ] = useState([]);
@@ -31,6 +32,7 @@ function App() {
 		<React.Fragment>
 			<Navbar />
 			<Container maxWidth="xl">
+				<ImageUpload />
 				{isLoading && <div>Loading...</div>}
 				<AddStudio />
 				{!isLoading && (
