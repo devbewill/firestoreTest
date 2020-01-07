@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import Dipendenti from './Dipendenti';
 import AddDipendente from './AddDipendente';
+import ImageUpload from './ImageUpload';
 
 function SimpleCard({ studio }) {
 	const [ nome, setNome ] = useState(studio.nome);
 	const [ city, setCity ] = useState(studio.city);
+	const [ logo, setLogo ] = useState('');
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
@@ -32,7 +34,7 @@ function SimpleCard({ studio }) {
 	const onUpdate = (e) => {
 		e.preventDefault();
 		const db = firebase.firestore();
-		db.collection('studi').doc(studio.id).set({ ...studio, nome, city });
+		db.collection('studi').doc(studio.id).set({ ...studio, nome, city, logo });
 	};
 
 	const onDelete = (e) => {
@@ -49,6 +51,8 @@ function SimpleCard({ studio }) {
 			<div className="card">
 				<h3>Attributi Studio</h3>
 				<div className="fields">
+					<ImageUpload logo={logo} setLogo={setLogo} />
+
 					<input
 						placeholder={studio.nome}
 						value={nome}

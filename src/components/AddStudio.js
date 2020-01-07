@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import firebase from '../firebase';
-import ImageUpload from './ImageUpload';
 
 function AddStudio() {
 	const [ newStudioNome, setNewStudioNome ] = useState('');
 	const [ newStudioCity, setNewStudioCity ] = useState('');
-	const [ logo, setLogo ] = useState('');
 
 	const onCreate = (e) => {
 		e.preventDefault();
 		const db = firebase.firestore();
-		db.collection('studi').add({ nome: newStudioNome, city: newStudioCity, logo });
+		db.collection('studi').add({ nome: newStudioNome, city: newStudioCity });
 		setNewStudioNome('');
 		setNewStudioCity('');
 	};
@@ -32,8 +30,6 @@ function AddStudio() {
 					label="city"
 					onChange={(e) => setNewStudioCity(e.target.value)}
 				/>
-
-				<ImageUpload logo={logo} setLogo={setLogo} />
 
 				<button variant="contained" color="primary" onClick={onCreate}>
 					Add

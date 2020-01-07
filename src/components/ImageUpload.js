@@ -7,7 +7,8 @@ function ImageUpload({ logo, setLogo }) {
 	const [ image, setImage ] = useState(null);
 	const [ progress, setProgress ] = useState(0);
 
-	const handleUpload = () => {
+	const handleUpload = (e) => {
+		e.preventDefault();
 		const uploadTask = storage.ref(`logos/${image.name}`).put(image);
 		uploadTask.on(
 			'state_changed',
