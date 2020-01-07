@@ -7,7 +7,7 @@ import ImageUpload from './ImageUpload';
 function SimpleCard({ studio }) {
 	const [ nome, setNome ] = useState(studio.nome);
 	const [ city, setCity ] = useState(studio.city);
-	const [ logo, setLogo ] = useState('');
+	const [ logo, setLogo ] = useState(studio.logo);
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
