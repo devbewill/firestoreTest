@@ -44,44 +44,47 @@ function SimpleCard({ studio }) {
 	};
 
 	return (
-		<div className="flexRowParent">
-			<div className="card">
+		<div className="card">
+			<div className="nameImage">
+				<img src={studio.logo} alt="" />
 				<h1>{studio.nome}</h1>
-				<img style={{ width: 100 }} src={studio.logo} alt="" />
-				<ImageUpload logo={logo} setLogo={setLogo} />
+			</div>
+			<ImageUpload logo={logo} setLogo={setLogo} />
 
-				<div className="fields">
-					<input
-						placeholder={studio.nome}
-						value={nome}
-						label="Nome"
-						onChange={(e) => {
-							setNome(e.target.value);
-						}}
-					/>
+			<div className="fields">
+				<h3>Denominazione</h3>
+				<input
+					placeholder={studio.nome}
+					value={nome}
+					label="Nome"
+					onChange={(e) => {
+						setNome(e.target.value);
+					}}
+				/>
 
-					<input
-						placeholder={studio.city}
-						value={city}
-						label="City"
-						onChange={(e) => {
-							setCity(e.target.value);
-						}}
-					/>
+				<input
+					placeholder={studio.city}
+					value={city}
+					label="City"
+					onChange={(e) => {
+						setCity(e.target.value);
+					}}
+				/>
 
-					<button variant="contained" color="primary" onClick={onUpdate}>
-						Update
-					</button>
-					<button variant="contained" color="secondary" onClick={onDelete}>
-						Delete
-					</button>
+				<button variant="contained" color="primary" onClick={onUpdate}>
+					Update
+				</button>
+				<button className="delete" variant="contained" color="secondary" onClick={onDelete}>
+					Delete
+				</button>
 
-					<div>
-						<h3>Lista Dipendenti</h3>
+				<div>
+					<h3>Lista Dipendenti</h3>
 
-						{dipendenti.map((dip, i) => <Dipendenti key={i} dip={dip} studio={studio} />)}
-						<AddDipendente studio={studio} />
-					</div>
+					{dipendenti.map((dip, i) => <Dipendenti key={i} dip={dip} studio={studio} />)}
+
+					<h3>Aggiungi Dipendenti</h3>
+					<AddDipendente studio={studio} />
 				</div>
 			</div>
 		</div>

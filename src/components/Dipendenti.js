@@ -51,7 +51,7 @@ function Dipendenti({ studio, dip }) {
 				Update
 			</button>
 
-			<button variant="contained" color="secondary" onClick={onDelete}>
+			<button className="delete" variant="contained" color="secondary" onClick={onDelete}>
 				Delete
 			</button>
 		</div>

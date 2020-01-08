@@ -1,7 +1,8 @@
 .cardsContainer {
 	display: flex;
-	flex-direction: column;
 	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .count {
@@ -9,35 +10,17 @@
 	color: deeppink;
 }
 .card {
-	padding-left: 5em;
+	flex-grow: 1;
+	background: #f3f3f3;
+	margin: 1em;
+	padding: 2em;
+	border-radius: 1em;
 }
 
 .addBar {
 	display: flex;
 	padding: 1em 2em;
-}
-
-.flexRowParent {
-	display: flex;
-	align-items: center;
-	/* justify-content: stretch; */
-}
-
-.flexRowParent {
-	display: flex;
-	align-items: center;
-	background: #f3f3f3;
-	margin: 1em 0;
-	padding: 2em 0;
-	border-radius: 1em;
-	/* justify-content: stretch; */
-}
-
-h1 {
-	font-size: 8vw;
-	margin: 1rem;
-	text-align: right;
-	min-width: 40vw;
+	background: #444;
 }
 
 h3 {
@@ -54,4 +37,116 @@ h4 {
 
 .separator {
 	padding-top: 5px;
+}
+
+.fields {
+	padding-top: 2em;
+}
+
+button {
+	padding: 0.5em;
+	margin: 0.5em;
+	background: #0eb3bb;
+	border-radius: 5px;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #fff;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+
+	&.delete {
+		background: red;
+	}
+
+	&.upload {
+		background: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.nameImage {
+	display: flex;
+	padding-bottom: 2em;
+	align-items: center;
+
+	h1 {
+		font-size: 6vw;
+		margin: 1rem;
+	}
+
+	img {
+		width: 100px;
+	}
+}
+.uploadBox {
+	display: flex;
+	flex-direction: row;
+}
+
+[type="file"] {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	white-space: nowrap;
+	width: 1px;
+}
+
+[type="file"] {
+	height: 0;
+	overflow: hidden;
+	width: 0;
+}
+
+[type="file"] + label {
+	cursor: pointer;
+	text-decoration: underline;
+	display: inline-block;
+	outline: none;
+	position: relative;
+	transition: all 0.3s;
+	vertical-align: middle;
+	margin: 0.5em;
+	border-radius: 5px;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #444;
+
+	&:hover {
+		color: darken(#0eb3bb, 10%);
+	}
+}
+
+.progressWrapper {
+	padding: 0;
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+	background: #7039da;
+	border-radius: 5px;
+}
+
+progress {
+	height: 5px;
+	margin-bottom: 2px;
+	display: block;
+	-webkit-appearance: none;
+	border: none;
+	width: 5em;
+}
+progress::-webkit-progress-bar {
+	background: rgba(255, 255, 255, 0.09);
+	border-radius: 5px 5px 0 0;
+}
+progress::-webkit-progress-value {
+	border-radius: 5px 0 0 0;
+
+	background: #fff;
 }
