@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Dashboard.scss';
 
 import firebase from './firebase';
-import Container from '@material-ui/core/Container';
 import SingleStudio from './components/SingleStudio';
 
 function Dashboard() {
@@ -27,19 +26,19 @@ function Dashboard() {
 	}, []);
 
 	return (
-		<Container maxWidth="xs">
+		<div className="dashboardWrapper">
 			{isLoading && <div>Loading...</div>}
 			{!isLoading && (
 				<React.Fragment>
-					<h2>
+					{/* <h2>
 						<span className="count">{count}</span> studi salvati
-					</h2>
-					<form className="cardsContainer" noValidate autoComplete="off">
+					</h2> */}
+					<div className="studiosList">
 						{studi.map((studio, i) => <SingleStudio key={i} studio={studio} />)}
-					</form>
+					</div>
 				</React.Fragment>
 			)}
-		</Container>
+		</div>
 	);
 }
 

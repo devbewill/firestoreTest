@@ -45,14 +45,12 @@ function SimpleCard({ studio }) {
 
 	return (
 		<div className="flexRowParent">
-			<img style={{ width: 100 }} src={studio.logo} alt="" />
-			<h1>{studio.nome}</h1>
-
 			<div className="card">
-				<h3>Attributi Studio</h3>
-				<div className="fields">
-					<ImageUpload logo={logo} setLogo={setLogo} />
+				<h1>{studio.nome}</h1>
+				<img style={{ width: 100 }} src={studio.logo} alt="" />
+				<ImageUpload logo={logo} setLogo={setLogo} />
 
+				<div className="fields">
 					<input
 						placeholder={studio.nome}
 						value={nome}

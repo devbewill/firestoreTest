@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import './App.css';
+// import './App.css';
+import './Home.scss';
 import Admin from './Admin';
 import Dashboard from './Dashboard';
 
 function App() {
 	return (
-		<React.Fragment>
+		<div className="container">
 			<Router>
 				<div>
-					<ul>
+					<ul className="topbar">
 						<li>
 							<Link to="/">Home</Link>
 						</li>
@@ -25,7 +26,7 @@ function App() {
 					<Route path="/admin" component={Admin} />
 				</div>
 			</Router>
-		</React.Fragment>
+		</div>
 	);
 }
 

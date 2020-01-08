@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './Admin.scss';
 import firebase from './firebase';
 import Container from '@material-ui/core/Container';
 import AddStudio from './components/AddStudio';

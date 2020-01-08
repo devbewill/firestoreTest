@@ -1,0 +1,55 @@
+.dashboardWrapper {
+	background: #38b6ff;
+	padding: 2em;
+	min-height: 100vh;
+}
+.studiosList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.singleStudio {
+	display: flex;
+	min-width: 500px;
+	justify-content: space-around;
+	align-items: center;
+	margin: 1em;
+	padding: 1em;
+	background: #fff;
+	border-radius: 1em;
+
+	h1 {
+		font-size: 3rem;
+		line-height: 0;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		font-size: 1.2em;
+		color: #777;
+		line-height: 0.2;
+	}
+
+	h3 {
+		font-size: 1em;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	.logo {
+		max-width: 100px;
+		height: auto;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		span {
+			padding: 0 2px;
+		}
+	}
+}

@@ -22,19 +22,23 @@ function SingleStudio({ studio }) {
 	);
 
 	return (
-		<div>
-			<img style={{ width: 100 }} src={studio.logo} alt="" />
-			<h1>{studio.nome}</h1>
-			<h2>{studio.city}</h2>
-			<h3>Lista Dipendenti</h3>
-			<ul>
-				{dipendenti.map((dip, i) => (
-					<li key={i}>
-						{dip.nome}
-						{dip.cognome}
-					</li>
-				))}
-			</ul>
+		<div className="singleStudio">
+			<img className="logo" src={studio.logo} alt="" />
+			<div className="studioName">
+				<h1>{studio.nome}</h1>
+				<h2>{studio.city}</h2>
+			</div>
+			<div className="studioDipendenti">
+				<h3>Dipendenti</h3>
+				<ul>
+					{dipendenti.map((dip, i) => (
+						<li key={i}>
+							<span>{dip.nome}</span>
+							<span>{dip.cognome}</span>
+						</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 }

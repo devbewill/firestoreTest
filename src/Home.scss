@@ -1,0 +1,21 @@
+.topbar {
+	background: #37b6ff;
+	margin: 0;
+	padding: 1em;
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	li {
+		font-weight: 800;
+		padding: 0 1em;
+		text-transform: uppercase;
+		justify-content: space-between;
+
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+	}
+}
