@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1)
+		}
+	}
+}));
 
 function Dipendenti({ studio, dip }) {
+	const classes = useStyles();
 	const [ dipNome, setDipNome ] = useState(dip.nome);
 	const [ dipCognome, setDipCognome ] = useState(dip.cognome);
 
@@ -29,8 +40,10 @@ function Dipendenti({ studio, dip }) {
 	};
 
 	return (
-		<div className="flexRow">
-			<input
+		<div className="flexRow" className={classes.root}>
+			<TextField
+				id="standard-basic"
+				label="Standard"
 				type="text"
 				value={dipNome}
 				label="Dip nome"
@@ -38,8 +51,10 @@ function Dipendenti({ studio, dip }) {
 					setDipNome(e.target.value);
 				}}
 			/>
-			<input
-				type="text"
+
+			<TextField
+				id="standard-basic"
+				label="Standard"
 				value={dipCognome}
 				label="Dip cognome"
 				onChange={(e) => {

@@ -3,8 +3,19 @@ import firebase from '../firebase';
 import Dipendenti from './Dipendenti';
 import AddDipendente from './AddDipendente';
 import ImageUpload from './ImageUpload';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1)
+		}
+	}
+}));
 
 function SimpleCard({ studio }) {
+	const classes = useStyles();
 	const [ nome, setNome ] = useState(studio.nome);
 	const [ city, setCity ] = useState(studio.city);
 	const [ logo, setLogo ] = useState(studio.logo);
@@ -51,9 +62,11 @@ function SimpleCard({ studio }) {
 			</div>
 			<ImageUpload logo={logo} setLogo={setLogo} />
 
-			<div className="fields">
+			<div className="fields" className={classes.root}>
 				<h3>Denominazione</h3>
-				<input
+				<TextField
+					id="standard-basic"
+					color="primary"
 					placeholder={studio.nome}
 					value={nome}
 					label="Nome"
@@ -62,7 +75,9 @@ function SimpleCard({ studio }) {
 					}}
 				/>
 
-				<input
+				<TextField
+					id="standard-basic"
+					color="primary"
 					placeholder={studio.city}
 					value={city}
 					label="City"

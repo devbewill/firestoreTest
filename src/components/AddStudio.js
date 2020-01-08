@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
 import firebase from '../firebase';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1)
+		},
+
+		background: '#efefef',
+		padding: '2em',
+		borderRadius: '0 0 1em 1em'
+	}
+}));
 
 function AddStudio() {
+	const classes = useStyles();
 	const [ newStudioNome, setNewStudioNome ] = useState('');
 	const [ newStudioCity, setNewStudioCity ] = useState('');
 
@@ -15,24 +30,25 @@ function AddStudio() {
 
 	return (
 		<div className="container">
-			<h2>Add new studio</h2>
-
-			<div className="addBar">
-				<input
+			<div className="addBar" className={classes.root}>
+				<h2>Add new studio</h2>
+				<TextField
+					id="standard-basic"
 					placeholder="nome"
 					value={newStudioNome}
-					label="nome"
+					label="Nome nuovo Studio"
 					onChange={(e) => setNewStudioNome(e.target.value)}
 				/>
-				<input
+				<TextField
+					id="standard-basic"
 					placeholder="city"
 					value={newStudioCity}
-					label="city"
+					label="City nuovo Studio"
 					onChange={(e) => setNewStudioCity(e.target.value)}
 				/>
 
 				<button variant="contained" color="primary" onClick={onCreate}>
-					Add
+					Add New
 				</button>
 			</div>
 		</div>

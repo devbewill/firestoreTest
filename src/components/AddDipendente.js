@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import firebase from '../firebase';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1)
+		}
+	}
+}));
 
 function AddDipendente({ studio }) {
+	const classes = useStyles();
 	const [ newDipNome, setNewDipNome ] = useState('');
 	const [ newDipCognome, setNewDipCognome ] = useState('');
 
@@ -14,9 +25,16 @@ function AddDipendente({ studio }) {
 	};
 
 	return (
-		<div className="flexrow separator">
-			<input placeholder="nome" value={newDipNome} label="nome" onChange={(e) => setNewDipNome(e.target.value)} />
-			<input
+		<div className="flexrow separator" className={classes.root}>
+			<TextField
+				id="standard-basic"
+				placeholder="nome"
+				value={newDipNome}
+				label="nome"
+				onChange={(e) => setNewDipNome(e.target.value)}
+			/>
+			<TextField
+				id="standard-basic"
 				placeholder="cognome"
 				value={newDipCognome}
 				label="cognome"
