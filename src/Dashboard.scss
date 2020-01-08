@@ -1,22 +1,18 @@
 .dashboardWrapper {
 	background: #222;
-	padding: 2em;
+	padding: 1em;
 	min-height: 100vh;
 	width: 500px;
 	margin: 0 auto;
 }
 .studiosList {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
+	flex-direction: column;
 }
 .singleStudio {
 	display: flex;
-	min-width: 500px;
-	justify-content: space-around;
 	align-items: center;
-	margin: 1em;
+	margin: 1em 0;
 	padding: 1em;
 	background: #fff;
 	border-radius: 1em;
@@ -36,13 +32,19 @@
 
 	h3 {
 		font-size: 1em;
+		padding: 0;
 		text-transform: uppercase;
 		margin: 0;
+	}
+
+	h5 {
+		line-height: 0;
 	}
 
 	.logo {
 		max-width: 100px;
 		height: auto;
+		padding-right: 2em;
 	}
 
 	ul {
@@ -53,5 +55,9 @@
 		span {
 			padding: 0 2px;
 		}
+	}
+
+	.studioName {
+		flex-grow: 3;
 	}
 }

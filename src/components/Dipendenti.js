@@ -40,10 +40,8 @@ function Dipendenti({ studio, dip }) {
 	};
 
 	return (
-		<div className="flexRow" className={classes.root}>
+		<div className={classes.root}>
 			<TextField
-				id="standard-basic"
-				label="Standard"
 				type="text"
 				value={dipNome}
 				label="Dip nome"
@@ -53,8 +51,6 @@ function Dipendenti({ studio, dip }) {
 			/>
 
 			<TextField
-				id="standard-basic"
-				label="Standard"
 				value={dipCognome}
 				label="Dip cognome"
 				onChange={(e) => {

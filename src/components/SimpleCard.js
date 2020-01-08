@@ -19,6 +19,7 @@ function SimpleCard({ studio }) {
 	const [ nome, setNome ] = useState(studio.nome);
 	const [ city, setCity ] = useState(studio.city);
 	const [ logo, setLogo ] = useState(studio.logo);
+	const [ tid, setTid ] = useState(studio.tid);
 
 	const [ dipendenti, setDipendenti ] = useState([]);
 
@@ -45,7 +46,7 @@ function SimpleCard({ studio }) {
 	const onUpdate = (e) => {
 		e.preventDefault();
 		const db = firebase.firestore();
-		db.collection('studi').doc(studio.id).set({ ...studio, nome, city, logo });
+		db.collection('studi').doc(studio.id).set({ ...studio, nome, city, logo, tid });
 	};
 
 	const onDelete = (e) => {
@@ -59,13 +60,12 @@ function SimpleCard({ studio }) {
 			<div className="nameImage">
 				<img src={studio.logo} alt="" />
 				<h1>{studio.nome}</h1>
+				<ImageUpload logo={logo} setLogo={setLogo} />
 			</div>
-			<ImageUpload logo={logo} setLogo={setLogo} />
 
-			<div className="fields" className={classes.root}>
+			<div className={classes.root}>
 				<h3>Denominazione</h3>
 				<TextField
-					id="standard-basic"
 					color="primary"
 					placeholder={studio.nome}
 					value={nome}
@@ -76,13 +76,22 @@ function SimpleCard({ studio }) {
 				/>
 
 				<TextField
-					id="standard-basic"
 					color="primary"
 					placeholder={studio.city}
 					value={city}
 					label="City"
 					onChange={(e) => {
 						setCity(e.target.value);
+					}}
+				/>
+
+				<TextField
+					color="primary"
+					placeholder={studio.tid}
+					value={tid}
+					label="TID"
+					onChange={(e) => {
+						setTid(e.target.value);
 					}}
 				/>
 

@@ -25,16 +25,14 @@ function AddDipendente({ studio }) {
 	};
 
 	return (
-		<div className="flexrow separator" className={classes.root}>
+		<div className={classes.root}>
 			<TextField
-				id="standard-basic"
 				placeholder="nome"
 				value={newDipNome}
 				label="nome"
 				onChange={(e) => setNewDipNome(e.target.value)}
 			/>
 			<TextField
-				id="standard-basic"
 				placeholder="cognome"
 				value={newDipCognome}
 				label="cognome"

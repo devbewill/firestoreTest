@@ -9,9 +9,7 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(1)
 		},
 
-		background: '#efefef',
-		padding: '2em',
-		borderRadius: '0 0 1em 1em'
+		padding: '2em'
 	}
 }));
 
@@ -19,32 +17,39 @@ function AddStudio() {
 	const classes = useStyles();
 	const [ newStudioNome, setNewStudioNome ] = useState('');
 	const [ newStudioCity, setNewStudioCity ] = useState('');
+	const [ newStudioTID, setNewStudioTID ] = useState('');
 
 	const onCreate = (e) => {
 		e.preventDefault();
 		const db = firebase.firestore();
-		db.collection('studi').add({ nome: newStudioNome, city: newStudioCity });
+		db.collection('studi').add({ nome: newStudioNome, city: newStudioCity, tid: newStudioTID });
 		setNewStudioNome('');
 		setNewStudioCity('');
+		setNewStudioTID('');
 	};
 
 	return (
 		<div className="container">
-			<div className="addBar" className={classes.root}>
-				<h2>Add new studio</h2>
+			<div className={classes.root}>
+				<h1>Aggiungi nuovo studio</h1>
 				<TextField
-					id="standard-basic"
 					placeholder="nome"
 					value={newStudioNome}
 					label="Nome nuovo Studio"
 					onChange={(e) => setNewStudioNome(e.target.value)}
 				/>
 				<TextField
-					id="standard-basic"
 					placeholder="city"
 					value={newStudioCity}
 					label="City nuovo Studio"
 					onChange={(e) => setNewStudioCity(e.target.value)}
+				/>
+
+				<TextField
+					placeholder="city"
+					value={newStudioTID}
+					label="TID nuovo Studio"
+					onChange={(e) => setNewStudioTID(e.target.value)}
 				/>
 
 				<button variant="contained" color="primary" onClick={onCreate}>

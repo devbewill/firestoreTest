@@ -35,14 +35,12 @@ function ImageUpload({ logo, setLogo }) {
 		<React.Fragment>
 			<div className="uploadBox">
 				<input
-					id="file"
 					type="file"
 					onChange={(e) => {
+						e.preventDefault();
 						setImage(e.target.files[0]);
 					}}
 				/>
-
-				<label for="file">Change logo</label>
 
 				<div className="progressWrapper">
 					<progress className="progressBar" value={progress} max="100" />

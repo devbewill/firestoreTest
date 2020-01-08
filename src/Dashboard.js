@@ -6,7 +6,6 @@ import SingleStudio from './components/SingleStudio';
 
 function Dashboard() {
 	const [ studi, setStudi ] = useState([]);
-	const [ count, setCount ] = useState();
 	const [ isLoading, setIsLoading ] = useState(true);
 
 	useEffect(() => {
@@ -20,7 +19,6 @@ function Dashboard() {
 			});
 
 			setStudi(data);
-			setCount(data.length);
 			setIsLoading(false);
 		});
 	}, []);

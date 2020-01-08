@@ -26,6 +26,7 @@ function SingleStudio({ studio }) {
 			<img className="logo" src={studio.logo} alt="" />
 			<div className="studioName">
 				<h1>{studio.nome}</h1>
+				<h5>{studio.tid}</h5>
 				<h2>{studio.city}</h2>
 			</div>
 			<div className="studioDipendenti">
