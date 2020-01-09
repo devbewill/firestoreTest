@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import Dipendenti from './Dipendenti';
 import AddDipendente from './AddDipendente';
-import ImageUpload from './ImageUpload';
+// import ImageUpload from './ImageUpload';
+import Filepond from './Filepond';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -60,8 +61,8 @@ function SimpleCard({ studio }) {
 			<div className="nameImage">
 				<img src={studio.logo} alt="" />
 				<h1>{studio.nome}</h1>
-				<ImageUpload logo={logo} setLogo={setLogo} />
 			</div>
+			<Filepond logo={logo} setLogo={setLogo} />
 
 			<div className={classes.root}>
 				<h3>Denominazione</h3>

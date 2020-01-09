@@ -33,7 +33,7 @@ function ImageUpload({ logo, setLogo }) {
 
 	return (
 		<React.Fragment>
-			<div className="uploadBox">
+			<div>
 				<input
 					type="file"
 					onChange={(e) => {
