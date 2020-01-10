@@ -17,34 +17,39 @@ function Filepond({ logo, setLogo }) {
 	const [ files, setFiles ] = useState([]);
 
 	return (
-		<FilePond
-			files={files}
-			server={{
-				process: (_fieldName, file, _metadata, load, error, progress, _abort) => {
-					const task = storage.ref('filepond').child(file.name).put(file);
+		<div>
+			<FilePond
+				files={files}
+				server={{
+					process: (_fieldName, file, _metadata, load, error, progress, _abort) => {
+						const task = storage.ref('filepond').child(file.name).put(file);
 
-					task.on(
-						firebase.storage.TaskEvent.STATE_CHANGED,
-						(snap) => {
-							progress(true, snap.bytesTransferred, snap.totalBytes);
-						},
-						(err) => {
-							error(err.message);
-						},
-						() => {
-							storage.ref('logos').child(file.name).getDownloadURL().then((logo) => {
-								setLogo(logo);
-							});
-						}
-					);
-				}
-			}}
-			onaddfile={(err, file) => console.log('on add', file.file)}
-			onupdatefiles={(fileItems) => {
-				setFiles({ files: fileItems.map((fileItem) => fileItem.file) });
-			}}
-			labelIdle="Change logo"
-		/>
+						task.on(
+							firebase.storage.TaskEvent.STATE_CHANGED,
+							(snap) => {
+								progress(true, snap.bytesTransferred, snap.totalBytes);
+							},
+							(err) => {
+								error(err.message);
+							},
+							() => {
+								storage.ref('logos').child(file.name).getDownloadURL().then((logo) => {
+									setLogo(logo);
+								});
+							}
+						);
+					}
+				}}
+				labelIdle="Change logo"
+				// onaddfile={(err, file) => console.log('on add', file.file)}
+				// onupdatefiles={(fileItems) => {
+				// 	//for multifile update
+				// 	// console.log(fileItems[0].file);
+				// 	// setFiles(fileItems.map((fileItem) => fileItem.file));
+
+				// }}
+			/>
+		</div>
 	);
 }
 

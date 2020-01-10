@@ -61,8 +61,9 @@ function SimpleCard({ studio }) {
 			<div className="nameImage">
 				<img src={studio.logo} alt="" />
 				<h1>{studio.nome}</h1>
+				<Filepond logo={logo} setLogo={setLogo} />
 			</div>
-			<Filepond logo={logo} setLogo={setLogo} />
+			{/* <Filepond logo={logo} setLogo={setLogo} /> */}
 
 			<div className={classes.root}>
 				<h3>Denominazione</h3>
