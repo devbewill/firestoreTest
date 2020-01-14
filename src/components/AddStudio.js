@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
 import firebase from '../firebase';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		'& > *': {
-			margin: theme.spacing(1)
-		},
-
-		padding: '2em'
-	}
-}));
-
 function AddStudio() {
-	const classes = useStyles();
 	const [ newStudioNome, setNewStudioNome ] = useState('');
 	const [ newStudioCity, setNewStudioCity ] = useState('');
 	const [ newStudioTID, setNewStudioTID ] = useState('');

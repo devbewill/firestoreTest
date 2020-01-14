@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Admin.scss';
 import firebase from './firebase';
-import Container from '@material-ui/core/Container';
 import AddStudio from './components/AddStudio';
 import SimpleCard from './components/SimpleCard';
 
@@ -28,7 +27,11 @@ function Admin() {
 
 	return (
 		<React.Fragment>
-			{isLoading && <div>Loading...</div>}
+			{isLoading && (
+				<div className="loadingScreen">
+					<h1>Loading..</h1>
+				</div>
+			)}
 			<AddStudio />
 			{!isLoading && (
 				<React.Fragment>
