@@ -46,6 +46,11 @@ h2.counter {
 	min-width: 80vw;
 	box-shadow: 0 5px 20px -6px #444;
 
+	@media (max-width: 600px) {
+		flex-direction: column;
+		margin: 2em 1em;
+	}
+
 	.MuiFormControl-root {
 		margin: 0.5em 1em 0.5em 0;
 		vertical-align: baseline;
@@ -64,6 +69,11 @@ p {
 	line-height: 1.4;
 	color: #565656;
 	font-size: 0.9em;
+
+	@media (max-width: 600px) {
+		font-size: 1em;
+		max-width: none;
+	}
 }
 h3 {
 	font-size: 0.9em;
@@ -105,6 +115,11 @@ button {
 	&.delete {
 		background: none;
 		color: red;
+
+		@media (max-width: 600px) {
+			font-size: 1em;
+			margin: 0 0 2em;
+		}
 	}
 
 	&.upload {
@@ -117,6 +132,11 @@ button {
 		background: none;
 		color: #000;
 	}
+
+	@media (max-width: 600px) {
+		font-size: 1em;
+		margin: 2em 0 0;
+	}
 }
 
 .nameImage {
@@ -127,9 +147,14 @@ button {
 	padding: 2em;
 
 	h1 {
-		font-size: 3vw;
+		font-size: 3em;
 		margin: 0.5em 0;
 		text-transform: uppercase;
+
+		@media (max-width: 600px) {
+			font-size: 4em;
+			text-align: center;
+		}
 	}
 
 	img {
@@ -143,6 +168,16 @@ button {
 	padding: 2em 2em 2em 5em;
 	display: flex;
 	flex-direction: column;
+	@media (max-width: 600px) {
+		padding: 2em;
+	}
+
+	div {
+		@media (max-width: 600px) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 }
 .uploadBox {
 	display: flex;
