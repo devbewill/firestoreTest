@@ -2,18 +2,54 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 }
 
-.count {
-	font-size: 5vw;
+h2.counter {
+	margin: 0 0 0 10vw;
+	font-size: 1.5em;
+	font-weight: 200;
+	.count {
+		font-size: 1.2em;
+		font-weight: 800;
+	}
+}
+
+.addStudio {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin: 2em;
+
+	.container {
+		background: #fff;
+		padding: 2em;
+		box-shadow: 0 5px 20px -6px #44444454;
+
+		.MuiFormControl-root {
+			margin: 0.5em 1em 0.5em 0;
+			vertical-align: baseline;
+		}
+
+		h1 {
+			font-size: 1.2em;
+			padding: 1em 0 0.5em 0;
+			margin: 0;
+		}
+	}
 }
 .card {
-	flex-grow: 1;
+	display: flex;
 	background: #fff;
-	margin: 1em;
-	padding: 2em;
-	border-radius: 1em;
+	margin: 2em;
+	min-width: 80vw;
+	box-shadow: 0 5px 20px -6px #444;
+
+	.MuiFormControl-root {
+		margin: 0.5em 1em 0.5em 0;
+		vertical-align: baseline;
+	}
 }
 
 .addBar {
@@ -21,9 +57,17 @@
 	padding: 1em 2em;
 }
 
+p {
+	margin: 0;
+	max-width: 80%;
+	padding-bottom: 2em;
+	line-height: 1.4;
+	color: #565656;
+	font-size: 0.9em;
+}
 h3 {
 	font-size: 0.9em;
-	padding: 2em 0 0.5em 0;
+	padding: 1em 0 0.5em 0;
 	margin: 0;
 	text-transform: uppercase;
 }
@@ -41,11 +85,15 @@ h4 {
 	padding-top: 2em;
 }
 
+.spacer {
+	height: 2em;
+}
+
 button {
-	padding: 0.5em;
-	margin: 0.5em;
-	background: #0eb3bb;
-	border-radius: 5px;
+	padding: 0.7em;
+	min-width: 80px;
+	background: #54bfd0;
+	border-radius: 2px;
 	font-size: 0.8em;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -55,7 +103,8 @@ button {
 	cursor: pointer;
 
 	&.delete {
-		background: red;
+		background: none;
+		color: red;
 	}
 
 	&.upload {
@@ -63,21 +112,37 @@ button {
 		margin: 0;
 		padding: 0;
 	}
+
+	&.exportParam {
+		background: none;
+		color: #000;
+	}
 }
 
 .nameImage {
 	display: flex;
-	padding-bottom: 0;
-	align-items: center;
+	background: #f5f5f5;
+	padding: 0;
+	flex-direction: column;
+	padding: 2em;
 
 	h1 {
-		font-size: 6vw;
-		margin: 1rem;
+		font-size: 3vw;
+		margin: 0.5em 0;
+		text-transform: uppercase;
 	}
 
 	img {
-		width: 100px;
+		width: 150px;
+		display: block;
+		margin: 0 auto;
 	}
+}
+
+.listaDip {
+	padding: 2em 2em 2em 5em;
+	display: flex;
+	flex-direction: column;
 }
 .uploadBox {
 	display: flex;
@@ -124,7 +189,6 @@ button {
 .progressWrapper {
 	padding: 0;
 	display: flex;
-
 	flex-direction: column;
 	align-items: center;
 	background: #7039da;

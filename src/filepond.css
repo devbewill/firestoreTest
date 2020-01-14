@@ -865,7 +865,7 @@
  ***
  */
 .filepond--root {
-	margin: 0;
+	margin: 2em 0;
 }
 .filepond--panel-root {
 	background: #0eb3bb;
@@ -879,7 +879,12 @@
 
 .filepond--drop-label.filepond--drop-label label {
 	color: #000;
-	font-weight: 600;
-	font-size: 0.9em;
+	font-weight: 800;
+	font-size: 0.8em;
 	text-transform: uppercase;
+	padding: 1em 0;
+}
+
+.filepond--drop-label {
+	justify-content: left;
 }

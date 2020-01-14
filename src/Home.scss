@@ -1,21 +1,22 @@
 .topbar {
-	background: #ffcb0c;
+	background: rgb(126, 255, 148);
+	background: linear-gradient(83deg, rgba(126, 255, 148, 1) 0%, rgba(44, 221, 125, 1) 48%, rgba(0, 255, 233, 1) 100%);
 	margin: 0;
-	padding: 1em;
+	padding: 1.5em;
 	list-style-type: none;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	li {
-		font-weight: 800;
 		padding: 0 1em;
 		text-transform: uppercase;
 		justify-content: space-between;
 
 		a {
 			text-decoration: none;
-			color: #222;
+			font-weight: 800;
+			color: #fff;
 		}
 	}
 }

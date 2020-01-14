@@ -28,20 +28,19 @@ function Admin() {
 
 	return (
 		<React.Fragment>
-			<Container maxWidth="xl">
-				{isLoading && <div>Loading...</div>}
-				<AddStudio />
-				{!isLoading && (
-					<React.Fragment>
-						<h2>
-							<span className="count">{count}</span> studi salvati
-						</h2>
-						<form className="cardsContainer" noValidate autoComplete="off">
-							{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
-						</form>
-					</React.Fragment>
-				)}
-			</Container>
+			{isLoading && <div>Loading...</div>}
+			<AddStudio />
+			{!isLoading && (
+				<React.Fragment>
+					<h2 className="counter">
+						Sono presenti
+						<span className="count"> {count}</span> studi
+					</h2>
+					<form className="cardsContainer" noValidate autoComplete="off">
+						{studi.map((studio, i) => <SimpleCard key={i} studio={studio} />)}
+					</form>
+				</React.Fragment>
+			)}
 		</React.Fragment>
 	);
 }

@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import firebase from '../firebase';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		'& > *': {
-			margin: theme.spacing(1)
-		}
-	}
-}));
-
 function AddDipendente({ studio }) {
-	const classes = useStyles();
 	const [ newDipNome, setNewDipNome ] = useState('');
 	const [ newDipCognome, setNewDipCognome ] = useState('');
 
@@ -25,7 +15,7 @@ function AddDipendente({ studio }) {
 	};
 
 	return (
-		<div className={classes.root}>
+		<div>
 			<TextField
 				placeholder="nome"
 				value={newDipNome}

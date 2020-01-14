@@ -29,9 +29,10 @@ function AddStudio() {
 	};
 
 	return (
-		<div className="container">
-			<div className={classes.root}>
-				<h1>Aggiungi nuovo studio</h1>
+		<div className="addStudio">
+			<div className="container">
+				<h1>Aggiungi un nuovo studio </h1>
+				<p>In questa sezione sarà possibile aggiungere eun nuovo studio al proprio database</p>
 				<TextField
 					placeholder="nome"
 					value={newStudioNome}
