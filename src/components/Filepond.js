@@ -22,7 +22,7 @@ function Filepond({ logo, setLogo }) {
 				files={files}
 				server={{
 					process: (_fieldName, file, _metadata, load, error, progress, _abort) => {
-						const task = storage.ref('filepond').child(file.name).put(file);
+						const task = storage.ref('logos').child(file.name).put(file);
 
 						task.on(
 							firebase.storage.TaskEvent.STATE_CHANGED,

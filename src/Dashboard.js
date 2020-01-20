@@ -24,18 +24,20 @@ function Dashboard() {
 	}, []);
 
 	return (
-		<div className="dashboardWrapper">
-			{isLoading && <div>Loading...</div>}
-			{!isLoading && (
-				<React.Fragment>
-					{/* <h2>
+		<div className="backgroundObj">
+			<div className="dashboardWrapper">
+				{isLoading && <div>Loading...</div>}
+				{!isLoading && (
+					<React.Fragment>
+						{/* <h2>
 						<span className="count">{count}</span> studi salvati
 					</h2> */}
-					<div className="studiosList">
-						{studi.map((studio, i) => <SingleStudio key={i} studio={studio} />)}
-					</div>
-				</React.Fragment>
-			)}
+						<div className="studiosList">
+							{studi.map((studio, i) => <SingleStudio key={i} studio={studio} />)}
+						</div>
+					</React.Fragment>
+				)}
+			</div>
 		</div>
 	);
 }

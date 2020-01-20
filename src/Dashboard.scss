@@ -1,9 +1,22 @@
+.backgroundObj {
+	display: block;
+	margin: 4em auto 0;
+
+	position: relative;
+	background: url(A920UI.png) center no-repeat;
+	height: 689px;
+	width: 313px;
+}
 .dashboardWrapper {
-	background: #222;
-	padding: 1em;
-	min-height: 100vh;
-	width: 500px;
-	margin: 0 auto;
+	position: absolute;
+	top: 145px;
+	left: 19px;
+	width: 272px;
+	height: 483px;
+	background: #ff0073;
+	padding: 0;
+	margin: 0;
+	overflow: scroll;
 }
 .studiosList {
 	display: flex;
@@ -12,48 +25,54 @@
 .singleStudio {
 	display: flex;
 	align-items: center;
-	margin: 1em 0;
-	padding: 1em;
+	margin: 0.5em;
+	padding: 1em 0.5em;
 	background: #fff;
 	border-radius: 1em;
 
 	h1 {
-		font-size: 3rem;
+		font-size: 1.2rem;
 		line-height: 0;
 		font-weight: 900;
 		text-transform: uppercase;
 	}
 
 	h2 {
-		font-size: 1.2em;
+		font-size: 0.9em;
 		color: #777;
 		line-height: 0.2;
 	}
 
 	h3 {
-		font-size: 1em;
+		font-size: 0.7em;
 		padding: 0;
 		text-transform: uppercase;
 		margin: 0;
 	}
 
 	h5 {
+		font-size: 0.6em;
 		line-height: 0;
 	}
 
 	.logo {
-		max-width: 100px;
+		max-width: 50px;
 		height: auto;
-		padding-right: 2em;
+		padding-right: .8em;
 	}
 
 	ul {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
-
-		span {
-			padding: 0 2px;
+		li {
+			padding: 0;
+			margin: 0;
+			line-height: 0.8;
+			span {
+				padding: 0 1px;
+				font-size: 0.7em;
+			}
 		}
 	}
 
